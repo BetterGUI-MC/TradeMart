@@ -1,5 +1,6 @@
 package me.hsgamer.bettergui.trademart;
 
+import me.hsgamer.bettergui.action.ActionApplier;
 import me.hsgamer.bettergui.builder.ButtonBuilder;
 import me.hsgamer.bettergui.menu.BaseMenu;
 import me.hsgamer.bettergui.util.StringReplacerApplier;
@@ -11,7 +12,6 @@ import me.hsgamer.hscore.config.CaseInsensitivePathString;
 import me.hsgamer.hscore.config.Config;
 import me.hsgamer.hscore.minecraft.gui.button.Button;
 import org.bukkit.entity.Player;
-import teammt.villagerguiapi.classes.VillagerInventory;
 import teammt.villagerguiapi.classes.VillagerTrade;
 
 import java.util.*;
@@ -89,7 +89,7 @@ public class TradeMenu extends BaseMenu {
         List<VillagerTrade> trades = getTrades(player);
         String parsedTitle = StringReplacerApplier.replace(title, player.getUniqueId(), this);
 
-        VillagerInventory inventory = new VillagerInventory(trades, player);
+        ActionVillagerInventory inventory = new ActionVillagerInventory(this, trades, player);
         inventory.setName(parsedTitle);
         inventory.open();
         return true;
@@ -112,6 +112,14 @@ public class TradeMenu extends BaseMenu {
             buttonTrade.button2.stop();
             buttonTrade.result.stop();
         });
+    }
+
+    ActionApplier getOpenActionApplier() {
+        return openActionApplier;
+    }
+
+    ActionApplier getCloseActionApplier() {
+        return closeActionApplier;
     }
 
     private static final class ButtonTrade {
