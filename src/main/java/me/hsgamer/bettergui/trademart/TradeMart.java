@@ -12,7 +12,7 @@ public final class TradeMart implements Expansion, GetPlugin {
 
     @Override
     public void onEnable() {
-        AdapterLoader.init();
+        AdapterLoader.init(getPlugin());
 
         MenuBuilder.INSTANCE.register(TradeMenu::new, "trade");
 
