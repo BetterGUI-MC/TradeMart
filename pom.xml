@@ -31,7 +31,6 @@
             <configuration>
               <shadedArtifactAttached>true</shadedArtifactAttached>
               <createDependencyReducedPom>false</createDependencyReducedPom>
-              <minimizeJar>true</minimizeJar>
               <relocations>
                 <!-- HSCore -->
                 <relocation>
