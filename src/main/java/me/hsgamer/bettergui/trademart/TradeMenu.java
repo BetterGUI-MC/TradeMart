@@ -31,7 +31,7 @@ public class TradeMenu extends BaseMenu {
                     .<Map<String, Object>>map(CaseInsensitiveStringMap::new)
                     .orElseGet(Collections::emptyMap);
 
-            Button button = Optional.ofNullable(MapUtils.getIfFound(map, "button", "item"))
+            Button button = Optional.ofNullable(MapUtils.getIfFound(map, "button", "item", "button1", "item1"))
                     .flatMap(MapUtils::castOptionalStringObjectMap)
                     .<Button>flatMap(values -> ButtonBuilder.INSTANCE.build(new ButtonBuilder.Input(this, "trade_" + key + "_button", values)))
                     .orElse(Button.EMPTY);

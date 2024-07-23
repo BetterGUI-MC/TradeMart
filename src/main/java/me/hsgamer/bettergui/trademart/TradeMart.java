@@ -14,7 +14,7 @@ public final class TradeMart implements Expansion, GetPlugin {
     public void onEnable() {
         AdapterLoader.init(getPlugin());
 
-        MenuBuilder.INSTANCE.register(TradeMenu::new, "trade");
+        MenuBuilder.INSTANCE.register(TradeMenu::new, "trade", "villager");
 
         Bukkit.getPluginManager().registerEvents(tradeInventoryListener, getPlugin());
     }
