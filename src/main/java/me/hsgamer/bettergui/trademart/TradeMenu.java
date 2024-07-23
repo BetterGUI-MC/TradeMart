@@ -8,9 +8,10 @@ import me.hsgamer.hscore.bukkit.gui.object.BukkitItem;
 import me.hsgamer.hscore.collections.map.CaseInsensitiveStringMap;
 import me.hsgamer.hscore.common.MapUtils;
 import me.hsgamer.hscore.common.Validate;
-import me.hsgamer.hscore.config.CaseInsensitivePathString;
 import me.hsgamer.hscore.config.Config;
 import me.hsgamer.hscore.minecraft.gui.button.Button;
+import me.hsgamer.hscore.minecraft.gui.button.DisplayButton;
+import me.hsgamer.hscore.minecraft.gui.object.Item;
 import org.bukkit.entity.Player;
 import teammt.villagerguiapi.classes.VillagerTrade;
 
@@ -24,8 +25,8 @@ public class TradeMenu extends BaseMenu {
         super(config);
 
         buttonTrades = new ArrayList<>();
-        for (Map.Entry<CaseInsensitivePathString, Object> entry : configSettings.entrySet()) {
-            String key = entry.getKey().getPathString().getLastPath();
+        for (Map.Entry<String, Object> entry : configSettings.entrySet()) {
+            String key = entry.getKey();
             Map<String, Object> map = MapUtils.castOptionalStringObjectMap(entry.getValue())
                     .<Map<String, Object>>map(CaseInsensitiveStringMap::new)
                     .orElseGet(Collections::emptyMap);
@@ -62,12 +63,22 @@ public class TradeMenu extends BaseMenu {
                 .orElse("Trade");
     }
 
+    private BukkitItem getItem(Button button, UUID uuid) {
+        DisplayButton displayButton = button.display(uuid);
+        if (displayButton == null) {
+            return null;
+        }
+
+        Item item = displayButton.getItem();
+        return item instanceof BukkitItem ? (BukkitItem) item : null;
+    }
+
     private List<VillagerTrade> getTrades(Player player) {
         List<VillagerTrade> trades = new ArrayList<>();
         for (ButtonTrade buttonTrade : buttonTrades) {
-            BukkitItem item = (BukkitItem) buttonTrade.button.getItem(player.getUniqueId());
-            BukkitItem item2 = (BukkitItem) buttonTrade.button2.getItem(player.getUniqueId());
-            BukkitItem result = (BukkitItem) buttonTrade.result.getItem(player.getUniqueId());
+            BukkitItem item = getItem(buttonTrade.button, player.getUniqueId());
+            BukkitItem item2 = getItem(buttonTrade.button2, player.getUniqueId());
+            BukkitItem result = getItem(buttonTrade.result, player.getUniqueId());
 
             if (item == null || result == null) {
                 continue;

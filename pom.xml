@@ -7,7 +7,7 @@
   <parent>
     <groupId>me.hsgamer.bettergui</groupId>
     <artifactId>addon-parent</artifactId>
-    <version>3.1</version>
+    <version>4.0</version>
   </parent>
 
   <artifactId>TradeMart</artifactId>
@@ -18,7 +18,6 @@
   <description>A menu to trade items with Villager GUI</description>
 
   <properties>
-    <plugin.version>9.5</plugin.version>
     <project.mainClass>me.hsgamer.bettergui.trademart.TradeMart</project.mainClass>
   </properties>
 

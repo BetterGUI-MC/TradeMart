@@ -2,7 +2,7 @@ package me.hsgamer.bettergui.trademart;
 
 import me.hsgamer.bettergui.action.ActionApplier;
 import me.hsgamer.bettergui.util.ProcessApplierConstants;
-import me.hsgamer.hscore.bukkit.scheduler.Scheduler;
+import me.hsgamer.bettergui.util.SchedulerUtil;
 import me.hsgamer.hscore.task.BatchRunnable;
 import org.bukkit.entity.Player;
 import teammt.villagerguiapi.classes.VillagerInventory;
@@ -29,7 +29,7 @@ public class ActionVillagerInventory extends VillagerInventory {
     private void executeActionApplier(ActionApplier applier) {
         BatchRunnable batchRunnable = new BatchRunnable();
         batchRunnable.getTaskPool(ProcessApplierConstants.ACTION_STAGE).addLast(process -> applier.accept(getForWho().getUniqueId(), process));
-        Scheduler.current().async().runTask(batchRunnable);
+        SchedulerUtil.async().run(batchRunnable);
     }
 
     public void callOpenAction() {
