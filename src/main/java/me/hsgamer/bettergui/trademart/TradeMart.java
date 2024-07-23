@@ -5,12 +5,15 @@ import me.hsgamer.bettergui.builder.MenuBuilder;
 import me.hsgamer.hscore.expansion.common.Expansion;
 import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
+import teammt.villagerguiapi.api.AdapterLoader;
 
 public final class TradeMart implements Expansion, GetPlugin {
     private final TradeInventoryListener tradeInventoryListener = new TradeInventoryListener();
 
     @Override
     public void onEnable() {
+        AdapterLoader.init();
+
         MenuBuilder.INSTANCE.register(TradeMenu::new, "trade");
 
         Bukkit.getPluginManager().registerEvents(tradeInventoryListener, getPlugin());
