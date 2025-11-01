@@ -11,7 +11,7 @@
   </parent>
 
   <artifactId>TradeMart</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
 
   <name>TradeMart</name>
@@ -78,7 +78,7 @@
     <dependency>
       <groupId>com.github.HSGamer.VillagerGUIApi</groupId>
       <artifactId>VillagerGUIApi.adapter-bundle</artifactId>
-      <version>394e83f9a3</version>
+      <version>0002754d1b</version>
     </dependency>
   </dependencies>
 </project>
