@@ -78,7 +78,7 @@
     <dependency>
       <groupId>com.github.HSGamer.VillagerGUIApi</groupId>
       <artifactId>VillagerGUIApi.adapter-bundle</artifactId>
-      <version>55ced91b1f</version>
+      <version>54768cd1d4</version>
     </dependency>
   </dependencies>
 </project>
