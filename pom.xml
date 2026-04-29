@@ -11,7 +11,7 @@
   </parent>
 
   <artifactId>TradeMart</artifactId>
-  <version>1.2</version>
+  <version>1.3</version>
   <packaging>jar</packaging>
 
   <name>TradeMart</name>
